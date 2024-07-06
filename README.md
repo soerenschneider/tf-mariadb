@@ -1,8 +1,9 @@
 # tf-mariadb
 
-![terratest](https://github.com/soerenschneider/tf-mariadb/actions/workflows/terratest.yaml/badge.svg)
+![gitleaks](https://github.com/soerenschneider/tf-mariadb/actions/workflows/gitleaks.yaml/badge.svg)
 ![lint-workflow](https://github.com/soerenschneider/tf-mariadb/actions/workflows/lint.yaml/badge.svg)
 ![security-workflow](https://github.com/soerenschneider/tf-mariadb/actions/workflows/security.yaml/badge.svg)
+![terratest](https://github.com/soerenschneider/tf-mariadb/actions/workflows/terratest.yaml/badge.svg)
 
 This repository implements Infrastructure as Code (IaC) using [OpenTofu](https://opentofu.org/) to configure MySQL/MariaDB databases and write user credentials to Hashicorp Vault.
 
