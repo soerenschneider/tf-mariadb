@@ -1,5 +1,5 @@
 locals {
-  env = "dev"
+  env = basename(abspath(path.module))
 }
 
 module "db" {
