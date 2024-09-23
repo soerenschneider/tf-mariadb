@@ -26,7 +26,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_credentials"></a> [credentials](#input\_credentials) | List of credentials for the appropriate database. | <pre>list(<br>    object({<br>      username = string,<br>      password = string<br>  }))</pre> | n/a | yes |
+| <a name="input_credentials"></a> [credentials](#input\_credentials) | List of credentials for the appropriate database. | <pre>list(<br/>    object({<br/>      username = string,<br/>      password = string<br/>  }))</pre> | n/a | yes |
 | <a name="input_database_name"></a> [database\_name](#input\_database\_name) | Name of the database the users belong to. | `string` | n/a | yes |
 | <a name="input_metadata"></a> [metadata](#input\_metadata) | Optional metadata to attach to the secret data. | `map(any)` | `null` | no |
 | <a name="input_path_prefix"></a> [path\_prefix](#input\_path\_prefix) | Prefix added to the path where secrets are stored. | `string` | `"mariadb"` | no |
