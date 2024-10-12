@@ -54,11 +54,21 @@ func TestTerragrunt(t *testing.T) {
 	defer terraform.Destroy(t, terraformOptions)
 	terraform.Apply(t, terraformOptions)
 
-	secret, err := readVaultSecret(vaultUrl, vaultToken, "secret/data/env/dev/mariadb/keycloak/soeren")
+	secret1, err := readVaultSecret(vaultUrl, vaultToken, "secret/data/klonk/keycloak/soeren")
 	assert.NoError(t, err)
-	assert.Contains(t, secret, "password")
-	readPassword := secret["password"].(string)
+	assert.Contains(t, secret1, "password")
+	readPassword := secret1["password"].(string)
 	readUser := "soeren"
+
+	secret2, err := readVaultSecret(vaultUrl, vaultToken, "secret/data/plop/keycloak/soeren")
+	assert.NoError(t, err)
+	assert.Contains(t, secret2, "password")
+	readPassword2 := secret2["password"].(string)
+	readUser2 := "soeren"
+
+	// check for equality
+	assert.Equal(t, readUser, readUser2)
+	assert.Equal(t, readPassword, readPassword2)
 
 	waitForDatabase(t, fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", readUser, readPassword, dbHost, dbPort, "keycloak"))
 }
