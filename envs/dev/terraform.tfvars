@@ -8,6 +8,7 @@ databases = [
         username    = "soeren",
         permissions = ["SELECT", "UPDATE"]
         password    = "hehehaasafasfassasdafd"
+        password_store_paths = ["klonk/%s/%s", "plop/%s/%s"]
       }
     ]
   }

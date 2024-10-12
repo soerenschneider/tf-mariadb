@@ -15,11 +15,11 @@ variable "database" {
 
 variable "users" {
   type = list(object({
-    username       = string,
-    password       = optional(string),
-    permissions    = optional(list(string)),
-    host           = optional(string),
-    vault_prefixes = optional(list(string))
+    username             = string,
+    password             = optional(string),
+    permissions          = optional(list(string)),
+    host                 = optional(string),
+    password_store_paths = optional(list(string))
   }))
 
   validation {

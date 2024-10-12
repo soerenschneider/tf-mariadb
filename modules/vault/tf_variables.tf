@@ -10,13 +10,12 @@ variable "database_name" {
 }
 
 variable "credentials" {
-  type = list(
-    object({
-      username = string,
-      password = string
-  }))
+  type = object({
+    username = string,
+    password = string
+  })
 
-  description = "List of credentials for the appropriate database."
+  description = "Credentials for the appropriate database."
 }
 
 variable "vault_kv2_mount" {
@@ -31,21 +30,31 @@ variable "vault_kv2_mount" {
   description = "Path where KV2 secret engine is mounted in HashiCorp Vault."
 }
 
-variable "path_prefix" {
-  type    = string
-  default = "mariadb"
+variable "password_store_paths" {
+  type        = list(string)
+  description = "Paths to write the secret to."
 
   validation {
-    condition     = length(var.path_prefix) >= 3
-    error_message = "path_prefix must be more than 2 characters."
+    condition = alltrue([
+      for path in var.password_store_paths : length(path) >= 5
+    ])
+    error_message = "Each path in password_store_paths must be at least 5 characters long."
   }
 
   validation {
-    condition     = !(startswith(var.path_prefix, "/") || endswith(var.path_prefix, "/"))
-    error_message = "Invalid path_prefix: must not start or end with a slash ('/')."
+    condition = alltrue([
+      for path in var.password_store_paths :
+      !startswith(path, "/") && !endswith(path, "/")
+    ])
+    error_message = "Each path in password_store_paths must not start or end with a slash ('/')."
   }
 
-  description = "Prefix added to the path where secrets are stored."
+  validation {
+    condition = alltrue([
+      for path in var.password_store_paths : can(regex("%s", path))
+    ])
+    error_message = "Each path in password_store_paths must contain the substring '%s'."
+  }
 }
 
 variable "metadata" {
