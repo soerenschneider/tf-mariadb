@@ -29,8 +29,8 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_database"></a> [database](#input\_database) | Configuration for the database. | <pre>object({<br>    name                  = string<br>    default_character_set = optional(string)<br>    default_collation     = optional(string)<br>  })</pre> | n/a | yes |
-| <a name="input_users"></a> [users](#input\_users) | List of users with their permissions and configurations. | <pre>list(object({<br>    username       = string,<br>    password       = optional(string),<br>    permissions    = optional(list(string)),<br>    host           = optional(string),<br>    vault_prefixes = optional(list(string))<br>  }))</pre> | n/a | yes |
+| <a name="input_database"></a> [database](#input\_database) | Configuration for the database. | <pre>object({<br/>    name                  = string<br/>    default_character_set = optional(string)<br/>    default_collation     = optional(string)<br/>  })</pre> | n/a | yes |
+| <a name="input_users"></a> [users](#input\_users) | List of users with their permissions and configurations. | <pre>list(object({<br/>    username             = string,<br/>    password             = optional(string),<br/>    permissions          = optional(list(string)),<br/>    host                 = optional(string),<br/>    password_store_paths = optional(list(string))<br/>  }))</pre> | n/a | yes |
 
 ## Outputs
 

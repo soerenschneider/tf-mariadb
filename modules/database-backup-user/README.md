@@ -29,7 +29,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_user"></a> [user](#input\_user) | Configuration for creating a backup user. | <pre>object({<br>    username = optional(string, "mysqlbackup")<br>    password = string<br>    host     = optional(string, "%")<br>  })</pre> | n/a | yes |
+| <a name="input_user"></a> [user](#input\_user) | Configuration for creating a backup user. | <pre>object({<br/>    username = optional(string, "mysqlbackup")<br/>    password = string<br/>    host     = optional(string, "%")<br/>  })</pre> | n/a | yes |
 
 ## Outputs
 
