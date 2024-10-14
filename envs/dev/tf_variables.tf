@@ -14,6 +14,7 @@ variable "databases" {
       }))
   }))
 
+  sensitive   = true
   description = "A list of databases and associated users configurations."
 }
 
